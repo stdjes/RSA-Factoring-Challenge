@@ -1,29 +1,47 @@
 #!/usr/bin/python3
 """factorize given set of numbers in a file to product of two small numbers"""
+# The above line specifies the interpreter to use for the script and provides a docstring for the script.
+
+# Import the 'argv' function from the 'sys' module to access command-line arguments.
 from sys import argv
 
-
+# Define a function named 'factorize' to find two small numbers that multiply to give a given number.
 def factorize(number_to_check):
     """"find two small numbers that multiply to give a given number"""
     i = 2
 
+    # Check if the number to check is less than 2.
     if number_to_check < 2:
         return
-    
+
+    # Start a loop to find the factors of the number.
     while number_to_check % i:
         i += 1
+
+    # Print the factors as a formatted string.
     print("{:.0f}={:.0f}*{:.0f}".format(number_to_check, number_to_check / i, i))
 
+# Check if the number of command-line arguments is not equal to 2.
 if len(argv) != 2:
     exit()
 
 try:
+    # Open the file specified in the command-line arguments for reading.
     with open(argv[1]) as file:
         line = file.readline()
 
+        # Iterate through each line in the file.
         while line != "":
+            # Convert the read line to an integer after removing the newline character.
             number_to_check = int(line.split('\n')[0])
+
+            # Call the 'factorize' function to find and print the factors of the number.
             factorize(number_to_check)
+
+            # Read the next line from the file.
             line = file.readline()
+
 except:
+    # Handle exceptions gracefully.
     pass
+
