@@ -1,33 +1,52 @@
 #!/usr/bin/python3
+# The above line specifies the interpreter to use for the script.
 
-# library to get arguments
+# Import the sys module to access command-line arguments.
 import sys
 
-
-# fn unpack number factorial
+# Define a function named 'fc' to factorize numbers.
 def fc():
     """
-    function fc to search file to convert number and format n=p*q
+    Function fc to factorize numbers from a file and format the results as n = p * q.
     """
     try:
+        # Get the filename from the command-line arguments.
         revfile = sys.argv[1]
+
+        # Open the specified file for reading.
         with open(revfile) as f:
+            # Iterate through each line in the file.
             for revnumber in f:
+                # Convert the read line to an integer.
                 revnumber = int(revnumber)
+
+                # Check if the number is even.
                 if revnumber % 2 == 0:
-                        print("{}={}*{}".format(revnumber, revnumber // 2, 2))
-                        continue
+                    # If even, print it as n = (n / 2) * 2.
+                    print("{} = {} * {}".format(revnumber, revnumber // 2, 2))
+                    continue
+
+                # Initialize 'i' to 3 for starting factor check.
                 i = 3
+
+                # Start a loop to find factors.
                 while i < revnumber // 2:
+                    # Check if 'i' is a factor of 'revnumber'.
                     if revnumber % i == 0:
-                        print("{}={}*{}".format(revnumber, revnumber // i, i))
+                        # If a factor is found, print it as n = (n / i) * i.
+                        print("{} = {} * {}".format(revnumber, revnumber // i, i))
                         break
+                    # Increment 'i' by 2 to check the next odd number.
                     i = i + 2
+
+                # If 'i' reaches (n / 2) + 1, it means no factors were found, so print n = n * 1.
                 if i == (revnumber // 2) + 1:
-                    print("{}={}*{}".format(revnumber, revnumber, 1))
+                    print("{} = {} * {}".format(revnumber, revnumber, 1))
+
     except (IndexError):
+        # Handle cases where the script is executed without specifying a filename argument.
         pass
 
-
-# autostart
+# Call the 'fc' function to start the execution of the script.
 fc()
+
