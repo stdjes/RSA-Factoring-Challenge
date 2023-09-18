@@ -23,7 +23,7 @@ def fc():
                 # Check if the number is even.
                 if revnumber % 2 == 0:
                     # If even, print it as n = (n / 2) * 2.
-                    print("{} = {} * {}".format(revnumber, revnumber // 2, 2))
+                    print("{}={}*{}".format(revnumber, revnumber // 2, 2))
                     continue
 
                 # Initialize 'i' to 3 for starting factor check.
@@ -34,14 +34,14 @@ def fc():
                     # Check if 'i' is a factor of 'revnumber'.
                     if revnumber % i == 0:
                         # If a factor is found, print it as n = (n / i) * i.
-                        print("{} = {} * {}".format(revnumber, revnumber // i, i))
+                        print("{}={}*{}".format(revnumber, revnumber // i, i))
                         break
                     # Increment 'i' by 2 to check the next odd number.
                     i = i + 2
 
                 # If 'i' reaches (n / 2) + 1, it means no factors were found, so print n = n * 1.
                 if i == (revnumber // 2) + 1:
-                    print("{} = {} * {}".format(revnumber, revnumber, 1))
+                    print("{}={}*{}".format(revnumber, revnumber, 1))
 
     except (IndexError):
         # Handle cases where the script is executed without specifying a filename argument.
